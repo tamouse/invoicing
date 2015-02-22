@@ -1,0 +1,7 @@
+%tr
+  %td= invoice_item.description
+  %td
+    = invoice_item.units
+    = invoice_item.billable_units
+  %td= number_to_currency(invoice_item.rate)
+  %td= number_to_currency(invoice_item.amount)

@@ -6,9 +6,11 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{href: root_path} New Rails App
+      %a.navbar-brand{href: root_path} Invoicing
 
     .collapse.navbar-collapse#navbar-collapse-1
       %ul.nav.navbar-nav
+        %li= link_to "Invoices", invoices_path
+      %ul.nav.navbar-nav.navbar-right
         %li= link_to "Welcome", static_pages_index_path
 

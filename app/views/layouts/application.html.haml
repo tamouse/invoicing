@@ -2,7 +2,9 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Invoicing
+    %title
+      = content_for?(:title) ? yield(:title) + ' - ' : ''
+      Invoicing
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -11,7 +13,6 @@
     = render partial: "flash_area"
 
     .container
-  
-    = yield
+      = yield
 
     = render partial: "footer"

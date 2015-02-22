@@ -11,6 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150222085707) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer  "invoice_id"
+    t.string   "description"
+    t.string   "billable_units"
+    t.decimal  "units"
+    t.decimal  "rate"
+    t.decimal  "amount"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "description"
+    t.date     "billing_date"
+    t.datetime "submitted_at"
+    t.text     "client_area"
+    t.decimal  "amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_foreign_key "invoice_items", "invoices"
 end

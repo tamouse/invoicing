@@ -1,0 +1,30 @@
+.page-header
+  %h3= "Invoice #{@invoice.description}"
+
+.row
+  .col-md-12= "Billing date: #{l @invoice.billing_date, format: :long}"
+
+.row
+  .col-md-12= "Submitted on: #{l @invoice.submitted_at, format: :long}"
+
+.row
+  .col-md-12
+    %p= @invoice.client_area
+
+.container
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Description
+        %th Units
+        %th Rate
+        %th Amount
+    %tfoot
+      %tr
+        %td &nbsp;
+        %td &nbsp;
+        %td &nbsp;
+        %td= number_to_currency(@invoice.amount)
+        
+    %tbody
+      = render @invoice.invoice_items

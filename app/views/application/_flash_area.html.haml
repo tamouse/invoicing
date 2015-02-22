@@ -1,2 +1,10 @@
-- if flash.any?
-  = flash_display
+- if flash[:alert]
+  .alert.alert-danger.alert-dismissable{role: "alert"}
+    %button.close{type: button, data: {dismiss: "alert"}, aria_label: "Close"}
+      %span{aria_hidden: true} &times;
+      = flash[:alert]
+- if flash[:notice]
+  .alert.alert-success.alert-dismissable{role: "alert"}
+    %button.close{type: button, data: {dismiss: "alert"}, aria_label: "Close"}
+      %span{aria_hidden: true} &times;
+      = flash[:notice]

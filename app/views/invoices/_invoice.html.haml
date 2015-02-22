@@ -1,0 +1,6 @@
+.row
+  .col-md-3= link_to invoice.description, invoice_path(invoice)
+  .col-md-2= invoice.billing_date
+  .col-md-2= l invoice.submitted_at, format: :short
+  .col-md-2= number_to_currency(invoice.amount)
+  .col-md-3= invoice.client_area
