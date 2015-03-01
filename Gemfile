@@ -30,4 +30,6 @@ group :development, :test do
   gem 'html2haml'
   gem 'foreman'
   gem 'mailcatcher'
+  gem 'guard'
+  gem 'guard-rspec'
 end
