@@ -1,32 +1,55 @@
+# Invoiding Application
 
-# README
+A rails app to help me with my invoicing and billing. It also serves
+as a bit of a showcase for my Rails abilities.
 
-A newly generated Rails application with the following already baked in:
+## Requirements
 
-* pry
-* rspec
-* factory girl
-* haml
-* twitter bootstrap
-* additional support for twitter bootstrap form building
+* Postgresql 9.3
+* Ruby 2.2.0
+* Rails 4.2.0
 
-The database you've chosen has already been created.
+## Installation
 
-There is a static startup page at root.
+Install the application from Github:
 
-Tests are run with:
+    $ git clone https://github.com/tamouse/invoicing.git /path/to/invoicing
+    $ bundle install
+    $ bundle binstub foreman
+    $ bundle binstub mailcatcher
+    $ bin/rake db:create db:setup
 
-    bin/rake # with no parameters
+## Running the Application
 
-or:
+For development, the foreman `Procfile` will start up the server and
+mailcatcher:
 
-    bin/rspec
+    $ bin/foreman start
 
-Information you should add here:
+## Testing
 
-* Ruby version
-* System dependencies
-* Configuration
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
+I'm only running `rspec` tests, no `cucumber`.
 
+    $ bin/rake spec
+
+You can also run `rspec` directly, but you may need to prepare the
+test database accordingly.
+
+    $ bin/rake db:test:prepare
+    $ bin/rspec \[options\] \[tests\]
+
+## Deployment
+
+T.B.D.
+
+## Contibuting
+
+[Contributing Doc](CONTRIBUTING.md)
+
+## License
+
+[License Info](LICENSE.txt)
+
+## Change Log
+
+[Change log](CHANGELOG.md)
