@@ -1,9 +1,22 @@
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id           :integer          not null, primary key
+#  description  :string
+#  billing_date :date
+#  submitted_at :datetime
+#  client_area  :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Invoice < ActiveRecord::Base
   has_many :invoice_items, dependent: :destroy
 
-  before_save :calculate_amount
+  validates_presence_of :description
 
-  def calculate_amount
-    self.amount = invoice_items.map(&:amount).inject(0,&:+)
+  def amount
+    invoice_items.map(&:amount).inject(0,&:+)
   end
 end

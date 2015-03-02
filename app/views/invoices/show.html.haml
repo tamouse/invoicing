@@ -1,15 +1,5 @@
-.page-header
-  %h3= "Invoice #{@invoice.description}"
-
-.row
-  .col-md-12= "Billing date: #{l @invoice.billing_date, format: :long}"
-
-.row
-  .col-md-12= "Submitted on: #{l @invoice.submitted_at, format: :long}"
-
-.row
-  .col-md-12
-    %p= @invoice.client_area
+.container
+  = render @invoice
 
 .container
   %table.table.table-striped
@@ -19,12 +9,17 @@
         %th Units
         %th Rate
         %th Amount
+        %th
+          = link_to new_invoice_invoice_item_path(@invoice), class: "btn btn-primary" do
+            = icon('plus')
+            Add a line
     %tfoot
       %tr
         %td &nbsp;
         %td &nbsp;
-        %td &nbsp;
+        %td TOTAL:
         %td= number_to_currency(@invoice.amount)
+        %td &nbsp;
         
     %tbody
       = render @invoice.invoice_items

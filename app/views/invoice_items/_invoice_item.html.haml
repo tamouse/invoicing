@@ -5,3 +5,9 @@
     = invoice_item.billable_units
   %td= number_to_currency(invoice_item.rate)
   %td= number_to_currency(invoice_item.amount)
+  %td
+    = link_to edit_invoice_invoice_item_path(@invoice, invoice_item), class: "btn btn-success" do
+      = icon('edit')
+    = link_to invoice_invoice_item_path(@invoice, invoice_item), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" do
+      = icon('remove')
+      

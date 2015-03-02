@@ -13,8 +13,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
 gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
-gem 'fontawesome-rails'
+gem 'font-awesome-sass'
 gem 'twitter_bootstrap_form_for', github: 'tamouse/twitter_bootstrap_form_for'
+gem 'annotate', '~> 2.6.5'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

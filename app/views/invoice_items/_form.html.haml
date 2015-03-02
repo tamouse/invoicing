@@ -1,0 +1,15 @@
+= twitter_bootstrap_form_for [@invoice, @invoice_item], layout: :horizontal do |f|
+  - if @invoice_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@invoice_item.errors.count, "error")} prohibited this invoice_item from being saved:"
+      %ul
+        - @invoice_item.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.inputs do
+    = f.text_field :description
+    = f.text_field :billable_units
+    = f.number_field :units
+    = f.number_field :rate
+    = f.actions do
+      = f.submit 'Save'

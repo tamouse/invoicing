@@ -1,8 +1,19 @@
-- title = "Invoices - Index"
+- title = "List of Invoices"
 
 - content_for :title do
   = title
 
 %h1= title
 
+%hr
+
+
 = render @invoices
+
+%hr
+
+.row
+  .col-md-12.text-left
+    = link_to new_invoice_path, class: "btn btn-primary" do
+      = icon("plus")
+      Add a new invoice

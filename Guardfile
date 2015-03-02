@@ -4,7 +4,7 @@
 ## Uncomment to clear the screen before every task
 # clearing :on
 
-guard :rspec, cmd: "bundle exec rspec", all_after_pass: true, all_on_start: true do
+guard :rspec, cmd: "bundle exec rspec -f d --fail-fast", all_after_pass: true, all_on_start: true do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
