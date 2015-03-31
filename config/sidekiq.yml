@@ -1,0 +1,8 @@
+defaults: &defaults
+  redis_uri: <%= ENV['REDIS_PORT'] %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

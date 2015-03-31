@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo "Bundling gems"
+bundle install --jobs 4 --retry 3 --without production
+
+echo "Generating binstubs"
+# bundle exec spring binstub --all
+bundle binstubs foreman
+bundle binstubs mailcatcher
+bundle binstubs rspec-core
+bundle binstubs sidekiq
+
+echo "Clearing logs"
+bin/rake log:clear
+
+echo "Setting up new db if one doesn't exist"
+bin/rake db:version || { bundle exec rake db:setup; } || exit -1
+
+echo "Removing contents of tmp dirs"
+bin/rake tmp:clear tmp:pids:clear
+
+echo "Starting app"
+# bundle exec rails s -p 3000
+bin/foreman start

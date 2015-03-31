@@ -1,0 +1,22 @@
+db:
+  image: postgres:9.3
+  ports:
+  - "5432"
+
+redis:
+  image: redis
+  ports:
+  - "6379"
+
+dev:
+  build: .
+  command: ./script/start
+  links:
+  - db
+  - redis
+  ports:
+  - "3000:3000"
+  volumes:
+  - .:/app
+  volumes_from:
+  - gems-2.1

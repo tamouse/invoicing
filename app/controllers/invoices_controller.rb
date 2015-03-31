@@ -10,22 +10,23 @@ class InvoicesController < ApplicationController
   end
 
   def new
+    redirect_to invoices_path, alert: "Not implemented yet"
   end
 
   def create
-    redirect_to invoices_path
+    redirect_to invoices_path, alert: "Not implemented yet"
   end
 
   def edit
-    redirect_to invoices_path
+    redirect_to invoices_path, alert: "Not implemented yet"
   end
 
   def update
-    redirect_to invoices_path
+    redirect_to invoices_path, alert: "Not implemented yet"
   end
 
   def destroy
-    redirect_to invoices_path
+    redirect_to invoices_path, alert: "Not implemented yet"
   end
 
   def submit
