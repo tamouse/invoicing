@@ -2,12 +2,7 @@
 require 'uri'
 
 conf = Rails.application.config_for(:sidekiq).symbolize_keys
-
-redis_uri = URI(conf[:redis_uri])
-redis_uri.scheme = 'redis'
-redis_uri.path = '/12'
-redis_uri = redis_uri.to_s
-
+redis_uri = "redis://#{conf[:redis_host]}:#{conf[:redis_port]}/12"
 Rails.logger.debug "Redis URI: #{redis_uri}"
 
 Sidekiq.configure_server do |config|

@@ -14,11 +14,10 @@ echo "Clearing logs"
 bin/rake log:clear
 
 echo "Setting up new db if one doesn't exist"
-bin/rake db:version || { bundle exec rake db:setup; } || exit -1
+bin/rake db:version 2>/dev/null || { bundle exec rake db:setup; } || exit -1
 
 echo "Removing contents of tmp dirs"
 bin/rake tmp:clear tmp:pids:clear
 
 echo "Starting app"
-# bundle exec rails s -p 3000
 bin/foreman start

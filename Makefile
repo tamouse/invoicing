@@ -1,33 +1,31 @@
-DOCKER_UUIDS=`docker ps -aq`
-CONTAINER=invoicing
-
 all:
 	@echo "Options:"
 	@echo " - clean: remove docker containers"
-	@echo " - create: create docker containers"
-	@echo " - run: run docker containers"
+	@echo " - create_gems_21: create gems docker data container"
+	@echo " - up: build and start the application containers"
+	@echo " - test: run tests"
 	@echo " - list: list docker containers"
 	@echo " - logs: tail log file of invoicing container"
-
-list:
-	docker ps -a
-
-list_uuids:
-	@echo ${DOCKER_UUIDS}
+	@echo " - annotate: run the annotate gem"
 
 clean:
-	docker rm ${DOCKER_UUIDS}
-
-create: create_gems_21 build_app
+	fig stop
+	fig rm --force -v
 
 create_gems_21:
 	docker create -v /ruby_gems/2.1 --name gems-2.1 busybox
 
-build_app: Dockerfile
-	docker build -t ${CONTAINER} .
+up: Dockerfile docker-compose.yml
+	fig up
 
-run:
-	docker run -d --name=${CONTAINER} --volumes-from=gems-2.1 ${CONTAINER}
+test:
+	fig run dev bin/rake
+
+list:
+	fig ps
 
 logs:
-	@docker logs -f ${CONTAINER}
+	fig logs
+
+annotate:
+	fig run dev bundle exec annotate
