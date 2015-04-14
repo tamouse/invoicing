@@ -363,6 +363,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sidekiq
+  sinatra
   therubyracer
   twitter_bootstrap_form_for!
   uglifier (>= 1.3.0)
