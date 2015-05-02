@@ -16,9 +16,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'twitter_bootstrap_form_for', github: 'tamouse/twitter_bootstrap_form_for'
 gem 'annotate', '~> 2.6.5'
-gem 'sidekiq'
 gem 'money-rails'
-gem 'sinatra', require: nil
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
