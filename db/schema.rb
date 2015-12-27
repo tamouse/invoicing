@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331214045) do
+ActiveRecord::Schema.define(version: 20150222085707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 20150331214045) do
     t.string   "description"
     t.string   "billable_units"
     t.decimal  "units"
-    t.decimal  "rate"
+    t.integer  "rate"
+    t.integer  "amount"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -33,21 +34,9 @@ ActiveRecord::Schema.define(version: 20150331214045) do
     t.date     "billing_date"
     t.datetime "submitted_at"
     t.text     "client_area"
+    t.integer  "total"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "surname"
-    t.string   "given_name"
-    t.string   "username"
-    t.string   "nickname"
-    t.string   "phone"
-    t.string   "email"
-    t.datetime "birthday"
-    t.boolean  "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "invoice_items", "invoices"

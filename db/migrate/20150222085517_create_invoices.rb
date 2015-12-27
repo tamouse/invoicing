@@ -5,7 +5,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.date :billing_date
       t.datetime :submitted_at
       t.text :client_area
-      t.decimal :amount
+      t.integer :total
 
       t.timestamps null: false
     end

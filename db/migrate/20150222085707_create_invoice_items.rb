@@ -5,8 +5,8 @@ class CreateInvoiceItems < ActiveRecord::Migration
       t.string :description
       t.string :billable_units
       t.decimal :units
-      t.decimal :rate
-      t.decimal :amount
+      t.integer :rate
+      t.integer :amount
 
       t.timestamps null: false
     end
